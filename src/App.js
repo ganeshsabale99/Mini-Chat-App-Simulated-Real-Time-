@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import RoomTabs from './components/RoomTabs';
+import ChatRoom from './components/ChatRoom';
 import './App.css';
 
+const rooms = ['general', 'random'];
+
 function App() {
+  const [currentRoom, setCurrentRoom] = useState('general');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1 className="app-title">Mini Chat App</h1>
+      <RoomTabs rooms={rooms} currentRoom={currentRoom} setCurrentRoom={setCurrentRoom} />
+      <ChatRoom room={currentRoom} />
     </div>
   );
 }
